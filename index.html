@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Snap 2 Keep – Custom Photo Magnets & Keychains</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Snap 2 Keep – clean, modern custom photo magnets, acrylic keychains, and keepsakes. Turn your favorite memories into minimal, aesthetic pieces."
+  />
+
+  <!-- Optional Google Font (clean + modern) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg: #f7f7f9;
+      --card-bg: #ffffff;
+      --accent: #222831;
+      --accent-soft: #e3e6ee;
+      --text-main: #222222;
+      --text-muted: #6b7280;
+      --border: #e5e7eb;
+      --radius-lg: 18px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.08);
+      --max-width: 980px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Layout */
+
+    .page {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 20px 16px 60px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+      position: sticky;
+      top: 14px;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-logo {
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #f3f4ff, #dde7ff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-text .name {
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      font-size: 18px;
+    }
+
+    .brand-text .tagline {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    nav {
+      display: flex;
+      gap: 16px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    nav a {
+      padding: 6px 10px;
+      border-radius: var(--radius-pill);
+      transition: background 0.18s ease, color 0.18s ease;
+      white-space: nowrap;
+    }
+
+    nav a:hover {
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    /* Hero */
+
+    .hero {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 28px;
+      align-items: center;
+    }
+
+    .hero-text h1 {
+      font-size: clamp(30px, 4vw, 38px);
+      line-height: 1.15;
+      margin-bottom: 10px;
+      color: var(--accent);
+    }
+
+    .hero-text p {
+      color: var(--text-muted);
+      font-size: 15px;
+      max-width: 480px;
+      margin-bottom: 18px;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .chip {
+      font-size: 11px;
+      padding: 6px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.8);
+      color: var(--text-muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      font-size: 13px;
+      padding: 10px 18px;
+      border-radius: var(--radius-pill);
+      border: 1px solid transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 500;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #ffffff;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .btn-primary:hover {
+      opacity: 0.95;
+      transform: translateY(1px);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border-color: var(--border);
+      color: var(--text-main);
+    }
+
+    .btn-ghost:hover {
+      background: var(--accent-soft);
+    }
+
+    .hero-media {
+      background: radial-gradient(circle at top left, #e8edff, #ffffff);
+      border-radius: 26px;
+      padding: 18px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid var(--border);
+      display: grid;
+      gap: 10px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .hero-card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 12px;
+      border: 1px solid var(--accent-soft);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 11px;
+    }
+
+    .hero-card-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      letter-spacing: 0.12em;
+    }
+
+    .hero-card-title {
+      font-weight: 600;
+      font-size: 13px;
+      color: var(--accent);
+    }
+
+    .hero-card-meta {
+      font-size: 10px;
+      color: var(--text-muted);
+    }
+
+    .hero-card-tagrow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .hero-card-tag {
+      font-size: 10px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #f3f4f6;
+      color: #4b5563;
+    }
+
+    /* Sections */
+
+    section {
+      margin-top: 40px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .section-header h2 {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .section-header p {
+      font-size: 13px;
+      color: var(--text-muted);
+      max-width: 420px;
+    }
+
+    /* Products */
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 14px 14px 16px;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 13px;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: baseline;
+    }
+
+    .card-title {
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .card-price {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .card-pill {
+      font-size: 10px;
+      padding: 4px 8px;
+      border-radius: var(--radius-pill);
+      background: #f3f4f6;
+      color: #4b5563;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 4px;
+      gap: 8px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .card-footer span {
+      white-space: nowrap;
+    }
+
+    /* Two-column layout */
+
+    .two-column {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    /* FAQ */
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .faq-item {
+      background: var(--card-bg);
+      border-radius: 14px;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      font-size: 13px;
+    }
+
+    .faq-q {
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .faq-a {
+      color: var(--text-muted);
+      font-size: 12px;
+    }
+
+    /* Contact */
+
+    .contact-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 16px 16px 18px;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+      font-size: 13px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      font-size: 13px;
+    }
+
+    .contact-label {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .contact-link {
+      padding: 8px 14px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border);
+      background: #f9fafb;
+      font-size: 12px;
+    }
+
+    .contact-note {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    footer {
+      margin-top: 40px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    footer a {
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      font-size: 11px;
+    }
+
+    /* Responsive */
+
+    @media (max-width: 800px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        position: static;
+      }
+      nav {
+        width: 100%;
+        overflow-x: auto;
+      }
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero-media {
+        order: -1;
+      }
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .two-column {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 550px) {
+      .grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .page {
+        padding-inline: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- HEADER -->
+    <header>
+      <div class="brand">
+        <div class="brand-logo">S2K</div>
+        <div class="brand-text">
+          <div class="name">Snap 2 Keep</div>
+          <div class="tagline">Custom photo keepsakes</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#custom">Custom Orders</a>
+        <a href="#shipping">Shipping</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section id="home" class="hero">
+      <div class="hero-text">
+        <h1>Turn your favorite photos into modern, minimal keepsakes.</h1>
+        <p>
+          Snap 2 Keep creates clean, custom photo magnets and acrylic keychains
+          so your best memories don’t just live on your phone.
+        </p>
+
+        <div class="hero-tags">
+          <span class="chip">2 × 2&quot; photo magnets</span>
+          <span class="chip">Clear acrylic keychains</span>
+          <span class="chip">Photo strips & mini prints</span>
+        </div>
+
+        <div class="hero-actions">
+          <a
+            href="https://your-etsy-link-here"
+            class="btn-primary"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Shop on Etsy →
+          </a>
+          <a href="#custom" class="btn-ghost">Request a custom order</a>
+        </div>
+      </div>
+
+      <div class="hero-media">
+        <div class="hero-card">
+          <div class="hero-card-label">Popular</div>
+          <div class="hero-card-title">2 × 2&quot; Fridge Magnets</div>
+          <div class="hero-card-meta">
+            Clean borders · Matte or glossy · Perfect for gallery fridges
+          </div>
+          <div class="hero-card-tagrow">
+            <span class="hero-card-tag">$5 each</span>
+            <span class="hero-card-tag">Bundle pricing</span>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="hero-card-label">New</div>
+          <div class="hero-card-title">Acrylic Photo Keychains</div>
+          <div class="hero-card-meta">
+            Clear, modern keychains featuring your own photo strips.
+          </div>
+          <div class="hero-card-tagrow">
+            <span class="hero-card-tag">Durable</span>
+            <span class="hero-card-tag">Gift-ready</span>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="hero-card-label">Custom</div>
+          <div class="hero-card-title">Couples & Pets</div>
+          <div class="hero-card-meta">
+            Celebrate relationships, family, and pets with simple, minimal layouts.
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="hero-card-label">For events</div>
+          <div class="hero-card-title">Market & bulk orders</div>
+          <div class="hero-card-meta">
+            Perfect for vendor markets, bridal parties, graduations, and more.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section id="products">
+      <div class="section-header">
+        <h2>Products</h2>
+        <p>
+          Clean, modern pieces made from your own photos. Pricing can be adjusted
+          per event, bundle, or promotion.
+        </p>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">2 × 2&quot; Photo Magnets</div>
+              <div class="card-price">From $5 each · bundle discounts</div>
+            </div>
+            <span class="card-pill">Best seller</span>
+          </div>
+          <p>
+            Square magnets with crisp edges and a clean border. Perfect for
+            fridges, lockers, and gifts.
+          </p>
+          <div class="card-footer">
+            <span>Finish: glossy or matte</span>
+            <span>Size: 2 × 2&quot;</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Acrylic Photo Keychains</div>
+              <div class="card-price">From $8 each</div>
+            </div>
+            <span class="card-pill">New</span>
+          </div>
+          <p>
+            Clear acrylic keychains featuring your own photos or photo strips.
+            Minimal, modern, and gift-ready.
+          </p>
+          <div class="card-footer">
+            <span>Hardware: silver tone</span>
+            <span>Shape: rectangle</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Photo Strips & Mini Prints</div>
+              <div class="card-price">Custom sets · price varies</div>
+            </div>
+            <span class="card-pill">Perfect for gifts</span>
+          </div>
+          <p>
+            Simple photo strips you can frame, slip into keychains, or tuck into
+            letters and journals.
+          </p>
+          <div class="card-footer">
+            <span>Layouts: 3–4 photos</span>
+            <span>Paper: premium photo</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CUSTOM ORDERS -->
+    <section id="custom">
+      <div class="section-header">
+        <h2>Custom Orders</h2>
+        <p>
+          Want something specific for a gift, event, or market? Send your photos
+          and a quick note about your idea, and we’ll create a clean, modern
+          layout together.
+        </p>
+      </div>
+
+      <div class="two-column">
+        <div>
+          <h3 style="font-size:15px; margin-bottom:6px;">How it works</h3>
+          <ol style="font-size:13px; color:var(--text-muted); padding-left:16px; display:flex; flex-direction:column; gap:4px;">
+            <li>Choose your product type (magnets, keychains, strips, or bundle).</li>
+            <li>Send your photos and any text (names, dates, short phrases).</li>
+            <li>Approve the digital preview before anything is made.</li>
+            <li>Your order is printed, assembled, and packed with care.</li>
+          </ol>
+
+          <div class="pill-list">
+            <span class="chip">Couples & anniversaries</span>
+            <span class="chip">Friends & family</span>
+            <span class="chip">Pets & travel</span>
+            <span class="chip">Events & markets</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Custom Request Template</div>
+          </div>
+          <p style="font-size:12px; color:var(--text-muted);">
+            You can copy and paste this when you message:
+          </p>
+          <pre style="font-size:11px; background:#f9fafb; padding:10px; border-radius:12px; border:1px solid var(--border); white-space:pre-wrap;">
+Hi! I’d like to place a custom order with Snap 2 Keep.
+
+• Product: (2x2 magnets / acrylic keychains / photo strips / bundle)
+• Quantity:
+• Colors / style: (clean, minimal, pastel, etc.)
+• Text to include (if any):
+• Deadline / date needed by:
+
+I can send photos once you confirm. Thank you!
+          </pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- SHIPPING -->
+    <section id="shipping">
+      <div class="section-header">
+        <h2>Shipping & Processing</h2>
+        <p>
+          Simple, transparent shipping. You can adjust these details based on
+          your actual carrier, location, and pricing.
+        </p>
+      </div>
+
+      <div class="two-column">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Processing Time</div>
+          </div>
+          <p>
+            Each item is made to order. Typical processing time is
+            <strong>3–7 business days</strong> before shipping.
+          </p>
+          <ul style="font-size:12px; color:var(--text-muted); padding-left:16px; margin-top:6px;">
+            <li>Rush orders may be available on request.</li>
+            <li>Delays may occur during holidays and busy seasons.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Shipping Options</div>
+          </div>
+          <p>
+            Orders are shipped via standard mail unless upgraded at checkout.
+          </p>
+          <ul style="font-size:12px; color:var(--text-muted); padding-left:16px; margin-top:6px;">
+            <li>USA: approx. 3–7 business days after dispatch.</li>
+            <li>Tracking available on most orders.</li>
+            <li>You’ll receive a message when your order ships.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="margin-top:14px; font-size:12px; color:var(--text-muted);">
+        <strong>Lost or damaged mail:</strong> Please contact me if your order
+        arrives damaged or doesn’t show up. I’ll do my best to help.
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="section-header">
+        <h2>FAQ</h2>
+        <p>Quick answers to common questions about Snap 2 Keep orders.</p>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q">What kind of photos work best?</div>
+          <div class="faq-a">
+            Clear, bright photos with good lighting work best. Avoid very dark
+            screenshots or tiny, blurry images.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Can you edit or crop my photos?</div>
+          <div class="faq-a">
+            Light cropping and basic adjustments are included. If a photo doesn’t
+            work well for the format, I’ll let you know and suggest alternatives.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Do you accept custom bulk or event orders?</div>
+          <div class="faq-a">
+            Yes. For markets, weddings, or group gifts, please reach out with your
+            quantity, date, and product type so I can quote a custom bundle.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Are designs very colorful or more minimal?</div>
+          <div class="faq-a">
+            Snap 2 Keep focuses on clean, modern layouts that highlight your
+            photos. Soft colors and simple designs keep everything timeless.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-header">
+        <h2>Contact</h2>
+        <p>
+          Have a question or custom idea? Reach out and we’ll put something
+          beautiful together.
+        </p>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-row">
+          <span class="contact-label">Primary</span>
+          <span class="contact-note">
+            DM or message is usually the fastest way to reach me.
+          </span>
+        </div>
+
+        <div class="contact-row">
+          <span class="contact-label">Etsy</span>
+          <a
+            href="https://your-etsy-link-here"
+            class="contact-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Message me on Etsy
+          </a>
+        </div>
+
+        <div class="contact-row">
+          <span class="contact-label">Instagram</span>
+          <a
+            href="https://your-instagram-link-here"
+            class="contact-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            @your.ig.handle
+          </a>
+        </div>
+
+        <div class="contact-row">
+          <span class="contact-label">Email</span>
+          <span class="contact-note">
+            You can also email: <strong>youremail@example.com</strong>
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <span>© <span id="year"></span> Snap 2 Keep. All rights reserved.</span>
+      <span>
+        Built with ♥ and hosted on
+        <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">
+          GitHub Pages
+        </a>
+      </span>
+    </footer>
+  </div>
+
+  <script>
+    // Auto-update year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+          </html>
