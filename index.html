@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -138,7 +139,7 @@
       top: calc(100% + 10px);
       left: 0;
       min-width: 220px;
-      z-index: 9999; /* ✅ changed from 999 -> 9999 */
+      z-index: 9999;
 
       background: rgba(255, 255, 255, 0.98);
       border: 1px solid var(--border);
@@ -161,13 +162,29 @@
       color: var(--accent);
     }
 
-    .nav-dropdown:hover .nav-dropdown-menu {
-      display: block;
+    /* ✅ NEW: button trigger for Products (so it works on mobile tap) */
+    .nav-dropbtn {
+      background: transparent;
+      border: 0;
+      font: inherit;
+      color: inherit;
+      padding: 6px 10px;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
 
-    /* ✅ ADDED: keep open when hovering the menu itself */
+    .nav-dropbtn:hover {
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    /* ✅ Show menu on hover (desktop) OR when opened (tap/mobile) OR keyboard focus */
     .nav-dropdown:hover .nav-dropdown-menu,
-    .nav-dropdown-menu:hover {
+    .nav-dropdown.open .nav-dropdown-menu,
+    .nav-dropdown:focus-within .nav-dropdown-menu {
       display: block;
     }
 
@@ -493,15 +510,17 @@
         </div>
       </div>
 
-      <!-- ✅ UPDATED NAV WITH DROPDOWN -->
+      <!-- ✅ UPDATED NAV WITH DROPDOWN (tap + hover) -->
       <nav>
         <a href="#home">Home</a>
 
         <div class="nav-dropdown">
-          <a href="#products">
+          <button type="button" class="nav-dropbtn" aria-expanded="false">
             Products <span class="nav-caret">▾</span>
-          </a>
+          </button>
+
           <div class="nav-dropdown-menu">
+            <a href="#products">View all products</a>
             <a href="magnets.html">2×2 Photo Magnets</a>
             <a href="keychains.html">Acrylic Keychains</a>
             <a href="prints.html">Photo Strips & Mini Prints</a>
@@ -856,6 +875,27 @@ I can send photos once you confirm. Thank you!
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
+
+  <!-- ✅ NEW: dropdown toggle script -->
+  <script>
+    document.querySelectorAll(".nav-dropdown").forEach((dd) => {
+      const btn = dd.querySelector(".nav-dropbtn");
+      if (!btn) return;
+
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const isOpen = dd.classList.toggle("open");
+        btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      });
+    });
+
+    document.addEventListener("click", () => {
+      document.querySelectorAll(".nav-dropdown.open").forEach((dd) => {
+        dd.classList.remove("open");
+        const btn = dd.querySelector(".nav-dropbtn");
+        if (btn) btn.setAttribute("aria-expanded", "false");
+      });
+    });
+  </script>
 </body>
 </html>
-
