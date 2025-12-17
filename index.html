@@ -138,7 +138,7 @@
       top: calc(100% + 10px);
       left: 0;
       min-width: 220px;
-      z-index: 999;
+      z-index: 9999; /* ✅ changed from 999 -> 9999 */
 
       background: rgba(255, 255, 255, 0.98);
       border: 1px solid var(--border);
@@ -162,6 +162,12 @@
     }
 
     .nav-dropdown:hover .nav-dropdown-menu {
+      display: block;
+    }
+
+    /* ✅ ADDED: keep open when hovering the menu itself */
+    .nav-dropdown:hover .nav-dropdown-menu,
+    .nav-dropdown-menu:hover {
       display: block;
     }
 
@@ -852,3 +858,4 @@ I can send photos once you confirm. Thank you!
   </script>
 </body>
 </html>
+
